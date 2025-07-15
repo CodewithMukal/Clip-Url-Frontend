@@ -22,7 +22,7 @@ export const Urlinput = () => {
       });
       if (response.status === 201) {
         const data = await response.json();
-        setLink("localhost:5173/r/" + data.shortID);
+        setLink("clipurlx.vercel.app/r/" + data.shortID);
         setResult(true);
       }
       else
