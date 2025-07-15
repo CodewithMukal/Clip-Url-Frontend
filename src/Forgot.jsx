@@ -5,6 +5,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { Spinner } from "./components/Spinner";
 import Success from "./assets/Success.gif";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Forgot = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -15,7 +17,7 @@ export const Forgot = () => {
   const [sent, setSent] = useState(false);
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("/api/user/info", {
+      const res = await fetch(`${BASE_URL}/api/user/info`, {
         method: "GET",
         credentials: "include",
       });
@@ -35,7 +37,7 @@ export const Forgot = () => {
       toast.error("Please enter your email address");
     }
     const response = await fetch(
-      "/api/user/forgot-password",
+      `${BASE_URL}/api/user/forgot-password`,
       {
         method: "POST",
         headers: {

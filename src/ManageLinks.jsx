@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Linkcard } from "./components/Linkcard";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const ManageLinks = () => {
   const navigate = useNavigate();
   const [loggedIn, setStatus] = useState(false);
@@ -13,7 +15,7 @@ export const ManageLinks = () => {
   useEffect(() => {
     const checkLoginAndFetchInfo = async () => {
       try {
-        const response = await fetch("/api/user/info", {
+        const response = await fetch(`${BASE_URL}/api/user/info`, {
           credentials: "include",
         });
         const data = await response.json();
@@ -26,7 +28,7 @@ export const ManageLinks = () => {
 
         // ✅ User is logged in, now fetch all info
         const infoResponse = await fetch(
-          "/api/url/allInfo",
+          `${BASE_URL}/api/url/allInfo`,
           {
             method: "POST",
             credentials: "include",

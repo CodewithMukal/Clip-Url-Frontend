@@ -6,7 +6,7 @@ export const Redirect = () => {
     const { shortid } = useParams();
     const redirectToUrl = async () => {
         try {
-            const response = await fetch(`/${shortid}`, {
+            const response = await fetch(`${BASE_URL}/${shortid}`, {
                 method: "GET",
             });
             const data = await response.json();

@@ -3,13 +3,15 @@ import logo from "../assets/logo.svg";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Navbar = () => {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(null); // null until check finishes
 
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("/api/user/info", {
+      const res = await fetch(`${BASE_URL}/api/user/info`, {
         method: "GET",
         credentials: "include",
       });

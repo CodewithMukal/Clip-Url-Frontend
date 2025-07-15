@@ -6,6 +6,8 @@ import { toast, ToastContainer } from "react-toastify";
 import eyeopen from "./assets/eyeopen.svg";
 import eyeclose from "./assets/eyeclose.svg";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Changepass = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -32,7 +34,7 @@ export const Changepass = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("/api/user/info", {
+      const res = await fetch(`${BASE_URL}/api/user/info`, {
         method: "GET",
         credentials: "include",
       });
@@ -66,7 +68,7 @@ export const Changepass = () => {
       const data = { email, oldPassword, newPassword };
       try {
         const response = await fetch(
-          "/api/user/change-password",
+          `${BASE_URL}/api/user/change-password`,
           {
             method: "PATCH",
             headers: {

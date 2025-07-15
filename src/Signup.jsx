@@ -17,6 +17,8 @@ export const Signup = () => {
   const [passSelect, setPassSelect] = useState(false);
   const [error, setError] = useState(false);
 
+  const BASE_URL = "https://clip-url-backend.onrender.com";
+
   useEffect(() => {
     setLevel1(password.length > 0);
     setLevel2(password.length >= 8);
@@ -27,7 +29,7 @@ export const Signup = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("/api/user/info", {
+      const res = await fetch(`${BASE_URL}/api/user/info`, {
         method: "GET",
         credentials: "include",
       });
@@ -56,7 +58,7 @@ export const Signup = () => {
     const sendData = async () => {
       try {
         const response = await fetch(
-          "/api/user/register",
+          `${BASE_URL}/api/user/register`,
           {
             method: "POST",
             headers: {

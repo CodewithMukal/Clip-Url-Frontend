@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import copy from "../assets/copy.svg";
 import { ToastContainer, toast } from "react-toastify";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Urlinput = () => {
   const [result, setResult] = useState(false);
   const [advance, setAdvance] = useState(false);
@@ -10,7 +12,7 @@ export const Urlinput = () => {
   const [alias,setAlias] = useState("");
   const handleShorten = async () => {
     try {
-      const response = await fetch("/api/url", {
+      const response = await fetch(`${BASE_URL}/api/url`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

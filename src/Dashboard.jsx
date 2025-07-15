@@ -11,6 +11,8 @@ import { Topbar } from "./components/Topbar";
 import { ToastContainer, toast } from "react-toastify";
 import { Spinner } from "./components/Spinner";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Dashboard = () => {
   const navigate = useNavigate();
   const [loggedIn, setStatus] = useState(false);
@@ -26,7 +28,7 @@ export const Dashboard = () => {
   useEffect(() => {
     const checkLoginAndFetchInfo = async () => {
       try {
-        const response = await fetch("/api/user/info", {
+        const response = await fetch(`${BASE_URL}/api/user/info`, {
           credentials: "include",
         });
         const data = await response.json();
@@ -39,7 +41,7 @@ export const Dashboard = () => {
 
         // ✅ User is logged in, now fetch all info
         const infoResponse = await fetch(
-          "/api/url/allInfo",
+          `${BASE_URL}/api/url/allInfo`,
           {
             method: "POST",
             credentials: "include",

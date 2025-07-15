@@ -7,6 +7,8 @@ import eyeopen from "./assets/eyeopen.svg";
 import eyeclose from "./assets/eyeclose.svg";
 import { useParams } from "react-router";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Reset = () => {
   const navigate = useNavigate();
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -54,7 +56,7 @@ export const Reset = () => {
       const data = { token, newPassword };
       try {
         const response = await fetch(
-          "/api/user/reset-password",
+          `${BASE_URL}/api/user/reset-password`,
           {
             method: "PATCH",
             headers: {

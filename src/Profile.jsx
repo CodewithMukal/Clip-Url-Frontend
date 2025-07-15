@@ -4,6 +4,8 @@ import { Topbar } from "./components/Topbar";
 import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
+const BASE_URL = "https://clip-url-backend.onrender.com";
+
 export const Profile = () => {
   const [userDetails, setUserDetails] = useState({
     user: {
@@ -16,7 +18,7 @@ export const Profile = () => {
   const navigate = useNavigate()
   const fetchUserDetails = async () => {
     try {
-      const response = await fetch("/api/user/info", {
+      const response = await fetch(`${BASE_URL}/api/user/info`, {
         method: "GET",
         credentials: "include",
       });
@@ -28,7 +30,7 @@ export const Profile = () => {
   };
   const handleSave = async ()=>{
     try {
-      const response = await fetch("/api/user/update", {
+      const response = await fetch(`${BASE_URL}/api/user/update`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +60,7 @@ export const Profile = () => {
     loadUserDetails();
   }, []);
   const handleLogout = async () => {
-    const response = await fetch('/api/user/logout',{
+    const response = await fetch(`${BASE_URL}/api/user/logout`,{
         method: "POST",
         credentials: "include"
     });
