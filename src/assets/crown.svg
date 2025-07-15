@@ -1,0 +1,14 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15.0254" cy="15" r="14.3921" fill="#FFE100"/>
+<circle cx="6.72264" cy="12.2323" r="1.66063" fill="white"/>
+<circle cx="1.66063" cy="1.66063" r="1.66063" transform="matrix(-1 0 0 1 24.8628 10.5717)" fill="white"/>
+<circle cx="10.2958" cy="9.28713" r="1.66063" transform="rotate(-7.85263 10.2958 9.28713)" fill="white"/>
+<circle cx="1.66063" cy="1.66063" r="1.66063" transform="matrix(-0.991472 -0.130318 -0.130318 0.991472 21.4536 7.83704)" fill="white"/>
+<circle cx="1.66063" cy="1.66063" r="1.66063" transform="matrix(-0.947799 0.318869 0.318869 0.947799 16.1055 6.40833)" fill="white"/>
+<path d="M10.4227 9.38812L16.8242 18.2881L13.3672 19.9484L10.4227 9.38812Z" fill="white"/>
+<path d="M19.4638 9.36892L13.1191 18.3095L16.5866 19.9477L19.4638 9.36892Z" fill="white"/>
+<path d="M14.9921 8.65898L13.2243 19.4786L17.059 19.4255L14.9921 8.65898Z" fill="white"/>
+<path d="M6.69696 12.1473L15.5295 18.4785L12.6977 21.2076L6.69696 12.1473Z" fill="white"/>
+<path d="M23.2278 12.1473L14.3953 18.4785L17.2271 21.2076L23.2278 12.1473Z" fill="white"/>
+<rect x="7.27588" y="16.1071" width="15.4992" height="5.53543" rx="2" fill="white"/>
+</svg>
