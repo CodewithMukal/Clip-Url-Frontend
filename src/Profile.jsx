@@ -16,7 +16,7 @@ export const Profile = () => {
   const navigate = useNavigate()
   const fetchUserDetails = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/user/info", {
+      const response = await fetch("/api/user/info", {
         method: "GET",
         credentials: "include",
       });
@@ -28,7 +28,7 @@ export const Profile = () => {
   };
   const handleSave = async ()=>{
     try {
-      const response = await fetch("http://localhost:8000/api/user/update", {
+      const response = await fetch("/api/user/update", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const Profile = () => {
     loadUserDetails();
   }, []);
   const handleLogout = async () => {
-    const response = await fetch('http://localhost:8000/api/user/logout',{
+    const response = await fetch('/api/user/logout',{
         method: "POST",
         credentials: "include"
     });

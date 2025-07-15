@@ -23,8 +23,8 @@ export const Linkcard = (props) => {
         </div>
             <label className='text-[18px] my-2 font-bold' htmlFor="">Short Link</label>
         <div className='flex items-start relative justify-center flex-col gap-2 '>
-            <input className='w-full bg-[#EDEDED] text-[18px] px-[10px] py-2' value={`http://localhost:5173/r/${props.shortID}`} readOnly  type="text" />
-            <button onClick={()=>{navigator.clipboard.writeText("http://localhost:5173/r/"+props.shortID); toast.success("Short Link Copied!")}} className='absolute top-[50%] bg-black/10 hover:bg-black/20 py-[12px] flex justify-center items-center px-[12px] -translate-y-[50%] right-0'>
+            <input className='w-full bg-[#EDEDED] text-[18px] px-[10px] py-2' value={`clipurlx.vercel.app/r/${props.shortID}`} readOnly  type="text" />
+            <button onClick={()=>{navigator.clipboard.writeText("clipurlx.vercel.app/r/"+props.shortID); toast.success("Short Link Copied!")}} className='absolute top-[50%] bg-black/10 hover:bg-black/20 py-[12px] flex justify-center items-center px-[12px] -translate-y-[50%] right-0'>
                 <img src={copy} alt="" />
             </button>
         </div>

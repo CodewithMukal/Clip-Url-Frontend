@@ -13,7 +13,7 @@ export const ManageLinks = () => {
   useEffect(() => {
     const checkLoginAndFetchInfo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/user/info", {
+        const response = await fetch("/api/user/info", {
           credentials: "include",
         });
         const data = await response.json();
@@ -26,7 +26,7 @@ export const ManageLinks = () => {
 
         // ✅ User is logged in, now fetch all info
         const infoResponse = await fetch(
-          "http://localhost:8000/api/url/allInfo",
+          "/api/url/allInfo",
           {
             method: "POST",
             credentials: "include",

@@ -10,7 +10,7 @@ export const Urlinput = () => {
   const [alias,setAlias] = useState("");
   const handleShorten = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/url", {
+      const response = await fetch("/api/url", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

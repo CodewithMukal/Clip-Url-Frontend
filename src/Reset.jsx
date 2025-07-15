@@ -54,7 +54,7 @@ export const Reset = () => {
       const data = { token, newPassword };
       try {
         const response = await fetch(
-          "http://localhost:8000/api/user/reset-password",
+          "/api/user/reset-password",
           {
             method: "PATCH",
             headers: {

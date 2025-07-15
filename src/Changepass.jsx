@@ -32,7 +32,7 @@ export const Changepass = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("http://localhost:8000/api/user/info", {
+      const res = await fetch("/api/user/info", {
         method: "GET",
         credentials: "include",
       });
@@ -66,7 +66,7 @@ export const Changepass = () => {
       const data = { email, oldPassword, newPassword };
       try {
         const response = await fetch(
-          "http://localhost:8000/api/user/change-password",
+          "/api/user/change-password",
           {
             method: "PATCH",
             headers: {

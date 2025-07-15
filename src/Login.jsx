@@ -16,7 +16,7 @@ export const Login = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("http://localhost:8000/api/user/info", {
+      const res = await fetch("/api/user/info", {
         method: "GET",
         credentials: "include",
       });
@@ -42,7 +42,7 @@ export const Login = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/user/login", {
+      const response = await fetch("/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

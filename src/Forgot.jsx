@@ -15,12 +15,11 @@ export const Forgot = () => {
   const [sent, setSent] = useState(false);
   useEffect(() => {
     const checkLogin = async () => {
-      const res = await fetch("http://localhost:8000/api/user/info", {
+      const res = await fetch("/api/user/info", {
         method: "GET",
         credentials: "include",
       });
       const data = await res.json();
-      console.log("Login status:", data);
       setLoggedIn(data.loggedIn);
       setEmail(data.user.email);
     };
@@ -36,7 +35,7 @@ export const Forgot = () => {
       toast.error("Please enter your email address");
     }
     const response = await fetch(
-      "http://localhost:8000/api/user/forgot-password",
+      "/api/user/forgot-password",
       {
         method: "POST",
         headers: {
@@ -50,7 +49,6 @@ export const Forgot = () => {
     if (data.status === "success") {
       setSent(true);
       setSending(false);
-      console.log(data.link);
       toast.success("Email sent! Please check your inbox.");
     } else {
       setSent(false);
@@ -153,7 +151,8 @@ export const Forgot = () => {
                 <p className="text-[16px] font-normal">
                   Password reset link has been shared to your email address. <br />
                   Do not share the link with anyone else!. <br />
-                  The link will expire in 30 minutes.
+                  The link will expire in 30 minutes. <br />
+                  Check spam if not received.
                 </p>
               </div>
             </div>
