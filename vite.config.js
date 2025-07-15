@@ -9,7 +9,7 @@ export default defineConfig({
   ],
   server:{
     proxy:{
-      '/api' : 'https://clip-url-backend.onrender.com/',
+      '/api' : 'https://clip-url-backend.onrender.com',
     }
   }
 })
