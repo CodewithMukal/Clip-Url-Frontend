@@ -1,6 +1,7 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import copy from "../assets/copy.svg";
 import { ToastContainer, toast } from "react-toastify";
+import { Spinner } from "./Spinner";
 
 const BASE_URL =
   import.meta.env.VITE_ENV == "production"
@@ -12,21 +13,22 @@ export const Urlinput = () => {
   const [advance, setAdvance] = useState(false);
   const [shortLink, setLink] = useState("");
   const [url, setUrl] = useState("");
-  const [verified,setVerify] = useState(undefined)
+  const [verified, setVerify] = useState(undefined);
   const [alias, setAlias] = useState("");
+  const [shortening, setShorten] = useState(false);
 
   useEffect(() => {
-      const checkLogin = async () => {
-        const res = await fetch(`${BASE_URL}/api/user/info`, {
-          method: "GET",
-          credentials: "include",
-        });
-        const data = await res.json();
-        setVerify(data.isVerified);
-      };
-  
-      checkLogin();
-    }, []);
+    const checkLogin = async () => {
+      const res = await fetch(`${BASE_URL}/api/user/info`, {
+        method: "GET",
+        credentials: "include",
+      });
+      const data = await res.json();
+      setVerify(data.isVerified);
+    };
+
+    checkLogin();
+  }, []);
   const sendVerifyMail = async () => {
     try {
       const response = await fetch(`${BASE_URL}/api/user/verify`, {
@@ -59,6 +61,7 @@ export const Urlinput = () => {
   };
 
   const handleShorten = async () => {
+    setShorten(true);
     try {
       const response = await fetch(`${BASE_URL}/api/url`, {
         method: "POST",
@@ -72,7 +75,9 @@ export const Urlinput = () => {
         const data = await response.json();
         setLink("clipurlx.vercel.app/r/" + data.shortID);
         setResult(true);
+        setShorten(false);
       } else {
+        setShorten(false);
         const data = await response.json();
         toast.error(data.error || "Failed to shorten URL");
         setResult(false);
@@ -82,6 +87,7 @@ export const Urlinput = () => {
         return;
       }
     } catch (err) {
+      setShorten(false);
       console.error("Error shortening URL:", err);
       setResult(false);
     }
@@ -99,12 +105,18 @@ export const Urlinput = () => {
             onChange={(e) => setUrl(e.target.value)}
           />
           <div className="flex gap-3 font-[Inter] text-[14px] justify-center items-center">
-            <div
-              onClick={() => handleShorten()}
-              className="bg-[#3646F4] hover:bg-[#46A6FF] transition-colors text-white px-2 py-1 rounded font-medium"
-            >
-              <button>Shorten</button>
-            </div>
+            {!shortening ? (
+              <div
+                onClick={() => handleShorten()}
+                className="bg-[#3646F4] hover:bg-[#46A6FF] transition-colors text-white px-2 py-1 rounded font-medium"
+              >
+                <button>Shorten</button>
+              </div>
+            ) : (
+              <div className="bg-[#3646F4] hover:bg-[#46A6FF] transition-colors text-white px-2 py-1 rounded font-medium">
+                <Spinner mode={2} />
+              </div>
+            )}
             <div
               onClick={() => setAdvance(!advance)}
               className="bg-[#3646F4] hover:bg-[#46A6FF] transition-colors text-white px-2 py-1 rounded font-medium"
