@@ -5,6 +5,7 @@ import { Tooltip } from "./components/Tooltip";
 import { toast, ToastContainer } from "react-toastify";
 import eyeopen from "./assets/eyeopen.svg";
 import eyeclose from "./assets/eyeclose.svg";
+import { Spinner } from "./components/Spinner";
 
 const BASE_URL =
   import.meta.env.VITE_ENV == "production"
@@ -22,6 +23,7 @@ export const Changepass = () => {
   const [level2, setLevel2] = useState(false);
   const [level3, setLevel3] = useState(false);
   const [passSelect, setPassSelect] = useState(false);
+  const [oldSelect, setOldSelect] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -132,16 +134,26 @@ export const Changepass = () => {
             value={email}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex relative flex-col">
           <label className="text-[#767676] font-medium text-[14px]" htmlFor="">
             Old Password
           </label>
           <input
             className="bg-white border-[1px] px-[20px] py-[8px] border-black/10"
-            type="text"
+            type={oldSelect? "text":"password"}
             onChange={(e) => setOldPassword(e.target.value)}
             value={oldPassword}
           />
+          <div
+            onClick={() => setOldSelect(!oldSelect)}
+            className="px-2 hover:opacity-50 -translate-y-[19%] py-2 absolute right-0 top-[48%]"
+          >
+            <img
+              className="w-5 h-auto"
+              src={oldSelect ? eyeopen : eyeclose}
+              alt=""
+            />
+          </div>
         </div>
         <div className="flex relative flex-col">
           <div className="flex justify-between">
@@ -205,12 +217,24 @@ export const Changepass = () => {
           </div>
         </div>
         <div>
-          <button
+          {
+            !loading ? (
+              <button
             onClick={() => handleChangePassword()}
             className="text-white w-full transition-colors py-2 hover:bg-[#46A6FF] font-bold bg-[#3646F4]"
           >
             Change Password
           </button>
+            )
+            :
+            (
+              <button
+            className="text-white w-full transition-colors py-2 font-bold bg-gray-500"
+          >
+            <Spinner mode={2}/>
+          </button>
+            )
+          }
         </div>
       </div>
     </div>
