@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import eyeopen from "./assets/eyeopen.svg";
 import eyeclose from "./assets/eyeclose.svg";
 import { useParams } from "react-router";
+import { Spinner } from "./components/Spinner";
 
 const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
@@ -21,6 +22,7 @@ export const Reset = () => {
   const [passSelect, setPassSelect] = useState(false);
   const [error, setError] = useState(false);
   const {id,token} = useParams();
+  const [loading,setLoading] = useState(true);
 
   useEffect(() => {
     setLevel1(newPassword.length > 0);
@@ -40,16 +42,19 @@ export const Reset = () => {
     navigate("/");
   };
   const handleChangePassword = async () => {
+    setLoading(true)
     if (!level3) {
       toast.error(
         "Password requirements not met! Please check the password strength indicators."
       );
       setError(true);
+      setLoading(false)
       return;
     } 
     else if (confirmPassword !== newPassword) {
       toast.error("Make sure to enter same password in both fields!");
       setError(true);
+      setLoading(false)
       return;
     } 
     else {
@@ -69,14 +74,18 @@ export const Reset = () => {
         const resData = await response.json();
         if (resData.status === "success") {
           toast.success("Password changed successfully! Redirecting in 3 seconds");
+          setLoading(false)
           setTimeout(()=>navigate("/login"),3000);
         } else if (resData.status === "failed") {
           toast.error("Failed to change password! " + resData.message);
+          setLoading(false)
         } else {
           toast.error("Unexpected response: " + JSON.stringify(resData));
+          setLoading(false)
         }
       } catch (error) {
         toast.error("Something went wrong. Please try again later.");
+        setLoading(false)
       }
     }
   };
@@ -182,12 +191,25 @@ export const Reset = () => {
                 </p>
             )
           }
-          <button
+          {
+            !loading?
+            (
+              <button
             onClick={() => handleChangePassword()}
             className="text-white w-full mt-6 transition-colors py-2 hover:bg-[#46A6FF] font-bold bg-[#3646F4]"
           >
             Change Password
           </button>
+            )
+            :
+            (
+              <button
+            className="text-white w-full mt-6 transition-colors py-2 font-bold bg-[#3646F4]"
+          >
+            <Spinner mode={2}/>
+          </button>
+            )
+          }
         </div>
       </div>
     </div>

@@ -4,14 +4,17 @@ import { Urlinput } from "./components/Urlinput";
 import pie from "./assets/pie.svg";
 import { Card } from "./components/Card";
 import linkvector from "./assets/linkvector.svg";
-import { useNavigate } from "react-router";
+import { data, useNavigate } from "react-router";
 import eye from "./assets/eye.svg";
 import crown from "./assets/crown.svg";
 import { Topbar } from "./components/Topbar";
 import { ToastContainer, toast } from "react-toastify";
 import { Spinner } from "./components/Spinner";
 
-const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
+const BASE_URL =
+  import.meta.env.VITE_ENV == "production"
+    ? "https://clip-url-backend.onrender.com"
+    : "http://localhost:8000";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -33,6 +36,7 @@ export const Dashboard = () => {
         });
         const data = await response.json();
         setStatus(data.loggedIn);
+        console.log("verified:", data.isVerified);
 
         if (!data.loggedIn) {
           navigate("/login");
@@ -40,13 +44,10 @@ export const Dashboard = () => {
         }
 
         // ✅ User is logged in, now fetch all info
-        const infoResponse = await fetch(
-          `${BASE_URL}/api/url/allInfo`,
-          {
-            method: "POST",
-            credentials: "include",
-          }
-        );
+        const infoResponse = await fetch(`${BASE_URL}/api/url/allInfo`, {
+          method: "POST",
+          credentials: "include",
+        });
         const infoData = await infoResponse.json();
         if (infoData) {
           const now = new Date();
@@ -139,7 +140,7 @@ export const Dashboard = () => {
           <Topbar />
           <ToastContainer />
           <div className="flex flex-col gap-6 mt-[20px] justify-center items-center">
-            <Urlinput />
+            <Urlinput verified={data.isVerified} />
             <select
               className="bg-white px-2 focus:outline-0 focus:ring-1 ring-blue-400 py-2 shadow rounded text-[#46A6FF] text-[14px]"
               name="month"
@@ -174,7 +175,7 @@ export const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <Spinner/>
+        <Spinner />
       )}
     </div>
   );

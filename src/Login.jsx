@@ -5,6 +5,7 @@ import google from "./assets/google.svg";
 import { toast, ToastContainer } from "react-toastify";
 import eyeopen from "./assets/eyeopen.svg";
 import eyeclose from "./assets/eyeclose.svg";
+import {Spinner} from './components/Spinner'
 
 const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
@@ -15,6 +16,7 @@ export const Login = () => {
   const [loggedIn, setLoggedIn] = useState(null);
   const [viewPass, setView] = useState(false);
   const [rememberMe, setRemember] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -37,6 +39,7 @@ export const Login = () => {
     navigate("/signup");
   };
   const handleLogin = async () => {
+    setLoading(true);
     const data = {
       email,
       password,
@@ -61,10 +64,13 @@ export const Login = () => {
         navigate("/dashboard");
       } else if (resData.status === "failed") {
         alert("Login failed! " + resData.message);
+        setLoading(false)
       } else {
         alert("Unexpected response: " + JSON.stringify(resData));
+        setLoading(false)
       }
     } catch (err) {
+      setLoading(false)
       console.error("Login error:", err);
       alert("Something went wrong. Check console.");
     }
@@ -153,12 +159,26 @@ export const Login = () => {
           </div>
         </div>
         <div>
-          <button
+          {
+            !loading ?
+            (
+              <button
             onClick={() => handleLogin()}
             className="text-white w-full py-2 hover:bg-[#46A6FF] font-bold bg-[#3646F4]"
           >
             Login
           </button>
+            )
+            :
+            (
+              <button
+            onClick={() => handleLogin()}
+            className="text-white w-full py-2 hover:bg-[#46A6FF] font-bold bg-[#3646F4]"
+          >
+            <Spinner mode={2} />
+          </button>
+            )
+          }
         </div>
         <div className="flex justify-center text-black/60 font-bold items-center border-[1px] border-black/20 mx-auto w-10 h-10 rounded-full">
           <p>or</p>

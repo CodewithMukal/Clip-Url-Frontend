@@ -15,13 +15,48 @@ export const Profile = () => {
     user: {
       username: "Fetching...",
       email: "Fetching...",
-      password: "Fetching...",
     },
   });
+  const [verified, setVerify] = useState(false);
+  const [sending,setSend] = useState(false);
   const [editable, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const navigate = useNavigate();
+  const sendVerifyMail = async () => {
+    setSend(true);
+    try {
+      const response = await fetch(`${BASE_URL}/api/user/verify`, {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const text = await response.text(); // Only read once!
+      let data;
+
+      try {
+        data = JSON.parse(text);
+      } catch (jsonErr) {
+        console.error("❌ Failed to parse JSON:", text);
+        toast.error("Invalid response from server");
+        return;
+      }
+
+      console.log("✅ Verify mail response:", data);
+
+      if (data.status === "success") {
+        toast.success(`${data.message} at ${data.email}`);
+      } else {
+        toast.error(data.message || "Failed to send verification mail");
+      }
+    } catch (err) {
+      console.error("🚨 Fetch failed:", err);
+      toast.error("Something went wrong while sending the verification mail.");
+    }
+    finally{
+      setSend(false)
+    }
+  };
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(`${BASE_URL}/api/user/info`, {
@@ -29,6 +64,7 @@ export const Profile = () => {
         credentials: "include",
       });
       const data = await response.json();
+      setVerify(data.isVerified)
       return data;
     } catch (error) {
       console.error("Error fetching user details:", error);
@@ -74,7 +110,7 @@ export const Profile = () => {
     loadUserDetails();
   }, []);
   const handleLogout = async () => {
-    setLoggingOut(true)
+    setLoggingOut(true);
     const response = await fetch(`${BASE_URL}/api/user/logout`, {
       method: "POST",
       credentials: "include",
@@ -124,6 +160,31 @@ export const Profile = () => {
             value={userDetails.user.email}
           />
         </div>
+        {verified ? (
+          <div>
+            <p className="font-medium font-[Inter] text-green-600">Verified!</p>
+          </div>
+        ) : (
+          <div>
+            <p className="font-medium font-[Inter] text-red-600">
+              You are not verified!
+            </p>
+            {
+              !sending?
+              (
+                <button onClick={sendVerifyMail} className="bg-[#3646F4] hover:bg-[#46A6FF] transition-colors text-white rounded font-bold px-4 py-2">
+              Verify Now
+            </button>
+              )
+              :
+              (
+                <button onClick={sendVerifyMail} className="bg-gray-300 transition-colors text-white rounded font-bold px-4 py-2">
+              <Spinner mode={2} />
+            </button>
+              )
+            }
+          </div>
+        )}
         <div className="flex gap-2 justify-center items-center my-[20px]">
           <div>
             {editable ? (
@@ -171,7 +232,7 @@ export const Profile = () => {
             onClick={() => handleLogout()}
             className="bg-gray-300 transition-colors w-fit mx-auto my-6 font-bold font-[Inter] px-46 py-2 flex justify-center items-center text-white"
           >
-            <Spinner mode={2}/>
+            <Spinner mode={2} />
           </button>
         )}
       </div>

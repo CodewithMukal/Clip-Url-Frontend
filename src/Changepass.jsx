@@ -6,20 +6,24 @@ import { toast, ToastContainer } from "react-toastify";
 import eyeopen from "./assets/eyeopen.svg";
 import eyeclose from "./assets/eyeclose.svg";
 
-const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
+const BASE_URL =
+  import.meta.env.VITE_ENV == "production"
+    ? "https://clip-url-backend.onrender.com"
+    : "http://localhost:8000";
 
 export const Changepass = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [viewPass,setView] = useState(false);
+  const [viewPass, setView] = useState(false);
   const [loggedIn, setLoggedIn] = useState(null); // null until check finishes
   const [level1, setLevel1] = useState(false);
   const [level2, setLevel2] = useState(false);
   const [level3, setLevel3] = useState(false);
   const [passSelect, setPassSelect] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLevel1(newPassword.length > 0);
@@ -54,41 +58,45 @@ export const Changepass = () => {
     navigate("/");
   };
   const handleChangePassword = async () => {
+    setLoading(true);
     if (!level3) {
       toast.error(
         "Password requirements not met! Please check the password strength indicators."
       );
       setError(true);
+      setLoading(false);
       return;
     } else if (oldPassword === newPassword) {
       toast.error("New password cannot be the same as old password.");
+      setLoading(false);
       setError(true);
       return;
     } else {
       const data = { email, oldPassword, newPassword };
       try {
-        const response = await fetch(
-          `${BASE_URL}/api/user/change-password`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify(data),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/user/change-password`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(data),
+        });
         const resData = await response.json();
         if (resData.status === "success") {
           toast.success("Password changed successfully!");
+          setLoading(false)
           navigate("/login");
         } else if (resData.status === "failed") {
           toast.error("Failed to change password! " + resData.message);
+          setLoading(false)
         } else {
           toast.error("Unexpected response: " + JSON.stringify(resData));
+          setLoading(false)
         }
       } catch (error) {
         toast.error("Something went wrong. Please try again later.");
+        setLoading(false)
       }
     }
   };
@@ -155,8 +163,15 @@ export const Changepass = () => {
             value={newPassword}
             type={viewPass ? "text" : "password"}
           />
-          <div onClick={()=>setView(!viewPass)} className="px-2 hover:opacity-50 -translate-y-[19%] py-2 absolute right-0 top-[48%]">
-            <img className="w-5 h-auto" src={viewPass? eyeopen : eyeclose} alt="" />
+          <div
+            onClick={() => setView(!viewPass)}
+            className="px-2 hover:opacity-50 -translate-y-[19%] py-2 absolute right-0 top-[48%]"
+          >
+            <img
+              className="w-5 h-auto"
+              src={viewPass ? eyeopen : eyeclose}
+              alt=""
+            />
           </div>
           {passSelect && <Tooltip />}
         </div>
@@ -181,7 +196,10 @@ export const Changepass = () => {
         )}
         <div className="flex justify-between items-center">
           <div className="flex justify-center items-center">
-            <button onClick={()=> navigate('/forgot-password')} className="text-[12px] text-[#46A6FF] underline hover:no-underline">
+            <button
+              onClick={() => navigate("/forgot-password")}
+              className="text-[12px] text-[#46A6FF] underline hover:no-underline"
+            >
               Forgot Password?
             </button>
           </div>

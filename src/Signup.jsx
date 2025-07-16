@@ -4,12 +4,17 @@ import google from "./assets/google.svg";
 import { useNavigate } from "react-router";
 import { Tooltip } from "./components/Tooltip";
 import { toast, ToastContainer } from "react-toastify";
+import { Spinner } from "./components/Spinner";
 
-const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
+const BASE_URL =
+  import.meta.env.VITE_ENV == "production"
+    ? "https://clip-url-backend.onrender.com"
+    : "http://localhost:8000";
 
 export const Signup = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(null); // null until check finishes
@@ -23,7 +28,10 @@ export const Signup = () => {
     setLevel1(password.length > 0);
     setLevel2(password.length >= 8);
     setLevel3(
-      password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password)
+      password.length >= 8 &&
+        /[A-Z]/.test(password) &&
+        /[0-9]/.test(password) &&
+        /[!@#$%^&*]/.test(password)
     );
   }, [password]);
 
@@ -48,8 +56,7 @@ export const Signup = () => {
     navigate("/");
   };
   const handleSignup = () => {
-    console.log(email, username, password);
-
+    setLoading(true);
     const userData = {
       username,
       email,
@@ -57,17 +64,14 @@ export const Signup = () => {
     };
     const sendData = async () => {
       try {
-        const response = await fetch(
-          `${BASE_URL}/api/user/register`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: "include", // if you're using cookies
-            body: JSON.stringify(userData),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/user/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // if you're using cookies
+          body: JSON.stringify(userData),
+        });
 
         const resData = await response.json();
 
@@ -76,27 +80,30 @@ export const Signup = () => {
           navigate("/dashboard");
         }
         if (resData.status === "failed") {
+          setLoading(false);
           toast.error("Signup failed! " + resData.message);
         }
       } catch (error) {
+        setLoading(false);
         console.error("Signup error:", error);
         alert("Something went wrong!");
       }
     };
 
-    if(level3)
-      {
-        sendData();
-      }
-    else{
+    if (level3) {
+      sendData();
+    } else {
       setError(true);
-      toast.error("Password requirements not met! Please check the password strength indicators.");
+      setLoading(false)
+      toast.error(
+        "Password requirements not met! Please check the password strength indicators."
+      );
     }
   };
 
   return (
     <div>
-      <ToastContainer/>
+      <ToastContainer />
       <div className="flex justify-between py-[15px] px-[100px] items-center">
         <div className="flex justify-center items-center">
           <button className="cursor-pointer" onClick={() => handleLogoClick()}>
@@ -148,16 +155,15 @@ export const Signup = () => {
           <input
             onFocus={() => setPassSelect(true)}
             onSelect={() => setError(false)}
-            onBlur={()=> setPassSelect(false)}
-            className={`bg-white border-[1px] px-[20px] py-[8px] border-black/10 ${error ? "border-red-500" : ""}`}
+            onBlur={() => setPassSelect(false)}
+            className={`bg-white border-[1px] px-[20px] py-[8px] border-black/10 ${
+              error ? "border-red-500" : ""
+            }`}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             type="password"
           />
-          {
-            passSelect && (
-              <Tooltip/>)
-          }
+          {passSelect && <Tooltip />}
         </div>
         {passSelect && (
           <div className="flex gap-1">
@@ -189,12 +195,23 @@ export const Signup = () => {
           </div>
         </div>
         <div>
-          <button
+          {
+            !loading ? (
+              <button
             onClick={() => handleSignup()}
             className="text-white w-full transition-colors py-2 hover:bg-[#46A6FF] font-bold bg-[#3646F4]"
           >
             Signup
           </button>
+            ):
+            (
+              <button
+            className="text-white w-full transition-colors py-2 font-bold bg-[#3646F4]"
+          >
+            <Spinner mode={2}/>
+          </button>
+            )
+          }
         </div>
         <div className="flex justify-center text-black/60 font-bold items-center border-[1px] border-black/20 mx-auto w-10 h-10 rounded-full">
           <p>or</p>
