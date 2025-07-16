@@ -19,7 +19,7 @@ export const Sidebar = () => {
   }
   return (
     <div
-      className={`bg-[#46A6FF] fixed top-0 left-0 justify-start gap-8 items-center px-[20px] py-[10px] flex flex-col h-[100vh] ${
+      className={`bg-[#46A6FF] fixed z-10 top-0 left-0 justify-start gap-8 items-center px-[20px] py-[10px] flex flex-col h-[100vh] ${
         expand ? "w-[200px] animate-grow" : "w-[60px] animate-shrink"
       }`}
     >

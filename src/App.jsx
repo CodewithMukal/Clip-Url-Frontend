@@ -12,6 +12,7 @@ import { Notfound } from "./Notfound";
 import { Forgot } from "./Forgot";
 import { Reset } from "./Reset";
 import { Redirect } from "./Redirect";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/r/:shortid" element={<Redirect/>}/>
         </Routes>
       </BrowserRouter>
+      <ToastContainer/>
     </>
   );
 }

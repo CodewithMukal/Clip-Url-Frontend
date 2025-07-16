@@ -14,7 +14,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
   const [viewPass, setView] = useState(false);
-  const [remember, setRemember] = useState(false);
+  const [rememberMe, setRemember] = useState(false);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -40,7 +40,7 @@ export const Login = () => {
     const data = {
       email,
       password,
-      remember,
+      rememberMe,
     };
 
     try {

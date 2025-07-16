@@ -4,6 +4,7 @@ import { Topbar } from "./components/Topbar";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Linkcard } from "./components/Linkcard";
+import { Dialog } from "./components/Dialog";
 
 const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
