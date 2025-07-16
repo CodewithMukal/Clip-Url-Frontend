@@ -3,7 +3,7 @@ import logo from "../assets/logo.svg";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 
-const BASE_URL = "https://clip-url-backend.onrender.com";
+const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
 export const Navbar = () => {
   const navigate = useNavigate();

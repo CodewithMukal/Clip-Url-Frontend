@@ -5,6 +5,8 @@ import { useNavigate } from "react-router";
 import { Tooltip } from "./components/Tooltip";
 import { toast, ToastContainer } from "react-toastify";
 
+const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
+
 export const Signup = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -16,8 +18,6 @@ export const Signup = () => {
   const [level3, setLevel3] = useState(false);
   const [passSelect, setPassSelect] = useState(false);
   const [error, setError] = useState(false);
-
-  const BASE_URL = "https://clip-url-backend.onrender.com";
 
   useEffect(() => {
     setLevel1(password.length > 0);

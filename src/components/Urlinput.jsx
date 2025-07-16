@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import copy from "../assets/copy.svg";
 import { ToastContainer, toast } from "react-toastify";
 
-const BASE_URL = "https://clip-url-backend.onrender.com";
+const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http:localhost:8000";
 
 export const Urlinput = () => {
   const [result, setResult] = useState(false);

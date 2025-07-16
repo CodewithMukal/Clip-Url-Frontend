@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Linkcard } from "./components/Linkcard";
 
-const BASE_URL = "https://clip-url-backend.onrender.com";
+const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
 export const ManageLinks = () => {
   const navigate = useNavigate();

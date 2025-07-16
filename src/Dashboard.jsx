@@ -11,7 +11,7 @@ import { Topbar } from "./components/Topbar";
 import { ToastContainer, toast } from "react-toastify";
 import { Spinner } from "./components/Spinner";
 
-const BASE_URL = "https://clip-url-backend.onrender.com";
+const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
