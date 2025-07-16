@@ -22,7 +22,7 @@ export const Reset = () => {
   const [passSelect, setPassSelect] = useState(false);
   const [error, setError] = useState(false);
   const {id,token} = useParams();
-  const [loading,setLoading] = useState(true);
+  const [loading,setLoading] = useState(false);
 
   useEffect(() => {
     setLevel1(newPassword.length > 0);
