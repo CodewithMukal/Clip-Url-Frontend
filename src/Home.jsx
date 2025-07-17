@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import longvshort from "./assets/longvshort.svg";
 import clip from "./assets/clip.svg";
@@ -22,8 +22,24 @@ import insta from "./assets/insta.svg";
 import hero from "./assets/hero.svg";
 import growarrow from "./assets/growarrow.svg";
 import shadowbox from "./assets/shadowbox.svg";
+import { useNavigate } from "react-router";
 
 export const Home = () => {
+  const [url,setUrl] = useState("");
+  const navigate = useNavigate();
+  const [email,setEmail] = useState();
+
+  const handleShorten = () => {
+    const trimmedURL = url.trim();
+  
+    if (trimmedURL === "") {
+      navigate("/dashboard");
+    } else {
+      navigate(`/dashboard/${encodeURIComponent(trimmedURL)}`);
+    }
+  };
+  
+
   return (
     <div>
       <Navbar />
@@ -46,6 +62,7 @@ export const Home = () => {
           <div className="flex flex-col md:flex-row md:gap-0 gap-2 w-full justify-start items-center">
             <div className="relative">
               <input
+                onChange={(e)=> setUrl(e.target.value)}
                 type="url"
                 placeholder="Enter URL to shortern in one click!"
                 className="bg-white py-[10px] lg:w-[600px] border-[1px] border-[#C5C5C5] border-r-0 rounded-full md:rounded-r-none placeholder:font-medium placeholder:text-[12px] placeholder:lg:text-[16px] text-[20px] pl-[60px] "
@@ -57,7 +74,7 @@ export const Home = () => {
               />
             </div>
             <div>
-              <button className="font-[Inter] rounded-l-full rounded-r-full md:rounded-tl-none md:rounded-bl-none text-nowrap text-[12px] lg:text-[20px] py-[10px] px-[20px] bg-[#3646F4] transition-colors border-[1px] border-[#3646F4] hover:bg-[#46A6FF] text-white font-bold">
+              <button onClick={handleShorten} className="font-[Inter] rounded-l-full rounded-r-full md:rounded-tl-none md:rounded-bl-none text-nowrap text-[12px] lg:text-[20px] py-[10px] px-[20px] bg-[#3646F4] transition-colors border-[1px] border-[#3646F4] hover:bg-[#46A6FF] text-white font-bold">
                 Shorten -{">"}
               </button>
             </div>
@@ -109,12 +126,12 @@ export const Home = () => {
         </div>
         <div className="flex justify-center items-center gap-[50px]">
           <div className="flex justify-center items-center">
-            <button className="font-[Inter] hover:bg-[#3646F4] hover:text-white transition-colors cursor-pointer bg-white border-[1px] border-[#3646F4] text-[#3464f4] font-semibold md:text-[20px] py-[15px] px-[30px]">
+            <button onClick={()=> navigate('/signup')} className="font-[Inter] hover:bg-[#3646F4] hover:text-white transition-colors cursor-pointer bg-white border-[1px] border-[#3646F4] text-[#3464f4] font-semibold md:text-[20px] py-[15px] px-[30px]">
               Learn More
             </button>
           </div>
           <div className="flex justify-center items-center">
-            <button className="hover:cursor-pointer transition-all ring-[#3464F4] py-[15px] px-[30px] hover:ring-[1px]">
+            <button onClick={()=> navigate('/signup')} className="hover:cursor-pointer transition-all ring-[#3464F4] py-[15px] px-[30px] hover:ring-[1px]">
               <pre className="font-[Inter] font-semibold md:text-[20px] text-[#3464f4]">
                 Sign Up {">"}
               </pre>
@@ -209,12 +226,12 @@ export const Home = () => {
         </div>
         <div className="flex justify-start items-center gap-[50px]">
           <div className="flex justify-center items-center">
-            <button className="font-[Inter] hover:bg-[#3646F4] hover:text-white transition-colors cursor-pointer bg-white border-[1px] border-[#3646F4] text-[#3464f4] font-semibold text-[20px] py-[15px] px-[30px]">
+            <button onClick={()=> navigate('/dashboard')} className="font-[Inter] hover:bg-[#3646F4] hover:text-white transition-colors cursor-pointer bg-white border-[1px] border-[#3646F4] text-[#3464f4] font-semibold text-[20px] py-[15px] px-[30px]">
               Shorten
             </button>
           </div>
           <div className="flex justify-center items-center">
-            <button className="hover:cursor-pointer transition-all ring-[#3464F4] py-[15px] px-[30px] hover:ring-[1px]">
+            <button onClick={()=> navigate('/signup')} className="hover:cursor-pointer transition-all ring-[#3464F4] py-[15px] px-[30px] hover:ring-[1px]">
               <pre className="font-[Inter] font-semibold text-[20px] text-[#3464f4]">
                 Learn More {">"}
               </pre>
@@ -292,10 +309,11 @@ export const Home = () => {
       <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
         <input
           type="email"
+          onChange={(e)=> setEmail(e.target.value)}
           className="bg-white px-4 py-2 h-14 text-black font-[Inter] placeholder:font-medium flex-1"
           placeholder="Enter your email here"
         />
-        <button className="bg-white h-14 text-[#3646f4] font-[Inter] font-semibold px-6">
+        <button onClick={()=> navigate(`/signup/${encodeURI(email)}`)} className="bg-white h-14 text-[#3646f4] font-[Inter] font-semibold px-6">
           Join
         </button>
       </div>

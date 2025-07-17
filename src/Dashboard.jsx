@@ -4,7 +4,7 @@ import { Urlinput } from "./components/Urlinput";
 import pie from "./assets/pie.svg";
 import { Card } from "./components/Card";
 import linkvector from "./assets/linkvector.svg";
-import { data, useNavigate } from "react-router";
+import { data, useNavigate, useParams } from "react-router";
 import eye from "./assets/eye.svg";
 import crown from "./assets/crown.svg";
 import { Topbar } from "./components/Topbar";
@@ -18,6 +18,7 @@ const BASE_URL =
 
 export const Dashboard = () => {
   const navigate = useNavigate();
+  const { url } = useParams();
   const [loggedIn, setStatus] = useState(false);
   const [totalClicks, setClicks] = useState(0);
   const [monthClicks, setMonthClicks] = useState(0);
@@ -25,9 +26,6 @@ export const Dashboard = () => {
   const [monthMostViewed, setMonthMostViewed] = useState(0);
   const [links, setLinks] = useState(0);
   const [monthLinks, setMonthLinks] = useState(0);
-  const handleLogoClick = async () => {
-    navigate("/");
-  };
   useEffect(() => {
     const checkLoginAndFetchInfo = async () => {
       try {
@@ -140,17 +138,13 @@ export const Dashboard = () => {
           <Topbar />
           <ToastContainer />
           <div className="flex flex-col gap-6 mt-[20px] justify-center items-center">
-            <Urlinput verified={data.isVerified} />
+            <Urlinput url={url} />
             <select
               className="bg-white px-2 focus:outline-0 focus:ring-1 ring-blue-400 py-2 shadow rounded text-[#46A6FF] text-[14px]"
               name="month"
               id=""
             >
-              <option value="">July 2025</option>
-              <option value="">June 2025</option>
-              <option value="">May 2025</option>
-              <option value="">April 2025</option>
-              <option value="">March 2025</option>
+              <option value="">Coming Soon...</option>
             </select>
             <div className="w-[95%] py-2 bg-[#46A6FF] rounded">
               <p className="flex gap-2 font-bold text-white justify-center items-center">

@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import copy from "../assets/copy.svg";
 import { ToastContainer, toast } from "react-toastify";
 import { Spinner } from "./Spinner";
+import { useParams } from "react-router";
 
 const BASE_URL =
   import.meta.env.VITE_ENV == "production"
     ? "https://clip-url-backend.onrender.com"
     : "http://localhost:8000";
 
-export const Urlinput = () => {
+export const Urlinput = (props) => {
   const [result, setResult] = useState(false);
   const [advance, setAdvance] = useState(false);
   const [shortLink, setLink] = useState("");
@@ -27,7 +28,10 @@ export const Urlinput = () => {
       const data = await res.json();
       setVerify(data.isVerified);
     };
-
+    if(props.url)
+      {
+        setUrl(props.url)
+      }
     checkLogin();
   }, []);
   const sendVerifyMail = async () => {
@@ -102,6 +106,7 @@ export const Urlinput = () => {
             placeholder="Enter your URL here"
             className="w-full focus:outline-0 focus:ring-1 ring-[#46A6FF] focus:placeholder:text-[#46A6FF] transition-colors rounded bg-black/5 font-[Inter] text-[13px] px-[10px] py-[5px]"
             type="url"
+            value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
           <div className="flex gap-3 font-[Inter] text-[14px] justify-center items-center">

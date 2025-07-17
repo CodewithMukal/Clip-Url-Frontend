@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
 const BASE_URL = import.meta.env.VITE_ENV=="production"?"https://clip-url-backend.onrender.com":"http://localhost:8000";
 
 export const Redirect = () => {
     const { shortid } = useParams();
+    const navigate = useNavigate();
     const redirectToUrl = async () => {
         try {
             const response = await fetch(`${BASE_URL}/${shortid}`, {
@@ -16,9 +17,11 @@ export const Redirect = () => {
                 window.location.href = data.orgUrl; // Redirect to the original URL
             } else {
                 toast.error("Redirect failed:", data.message);
+                navigate("/")
             }
         } catch (error) {
             toast.error("Error during redirect:", error);
+            navigate("/")
         }
     };
     useEffect(()=>{

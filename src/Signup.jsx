@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./assets/logo.svg";
 import google from "./assets/google.svg";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Tooltip } from "./components/Tooltip";
 import { toast, ToastContainer } from "react-toastify";
 import { Spinner } from "./components/Spinner";
@@ -23,6 +23,7 @@ export const Signup = () => {
   const [level3, setLevel3] = useState(false);
   const [passSelect, setPassSelect] = useState(false);
   const [error, setError] = useState(false);
+  const { paramsemail } = useParams();
 
   useEffect(() => {
     setLevel1(password.length > 0);
@@ -46,7 +47,10 @@ export const Signup = () => {
       setLoggedIn(data.loggedIn);
       if (data.loggedIn) navigate("/dashboard");
     };
-
+    if(paramsemail)
+      {
+        setEmail(paramsemail)
+      }
     checkLogin();
   }, []);
   const handleLoginClick = () => {
