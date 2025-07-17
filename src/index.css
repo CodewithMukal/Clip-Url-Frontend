@@ -1,80 +1,146 @@
-@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-800%);
-    }
+  0% {
+    transform: translateX(0);
   }
-  
-  .animate-slide {
-    animation: slide 10s linear infinite;
-  }  
+  100% {
+    transform: translateX(-800%);
+  }
+}
+.animate-slide {
+  animation: slide 10s linear infinite;
+}
+.animate-box {
+  animation: box 5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes box {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.delay-100ms {
+  animation-delay: 100ms;
+}
+.delay-200ms {
+  animation-delay: 200ms;
+}
+.delay-500ms {
+  animation-delay: 500ms;
+}
+.delay-800ms {
+  animation-delay: 800ms;
+}
+
+.animated-arrow {
+  animation: floatArrow 3s ease-in-out infinite;
+}
+
+@keyframes floatArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-scale {
+  animation: scale 200ms ease-in-out;
+}
+
+@keyframes scale {
+  0% {
+    scale: 0.5;
+    opacity: 0.5;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+.animate-scale2 {
+  animation: scale2 400ms ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+@keyframes scale2 {
+  0% {
+    scale: 0.8;
+    opacity: 0.5;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+.animated-arrow {
+  will-change: transform;
+}
 
 @keyframes slideDown {
-  0%
-  {
+  0% {
     transform: translateY(-10px);
     opacity: 0;
   }
-  100%
-  {
+  100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
 .animate-slideDown {
-  animation: slideDown 300ms ease-out
+  animation: slideDown 300ms ease-out;
 }
-@keyframes rot{
-  0%
-  {
+@keyframes rot {
+  0% {
     rotate: 0deg;
   }
-  100%
-  {
+  100% {
     rotate: 180deg;
   }
 }
-@keyframes rotBack{
-  0%
-  {
+@keyframes rotBack {
+  0% {
     rotate: 180deg;
   }
-  100%
-  {
+  100% {
     rotate: 0deg;
   }
 }
-.animate-rot{
+.animate-rot {
   animation: rotBack 200ms ease-in-out;
 }
-.blue:hover{
-  filter: brightness(0) saturate(100%) invert(77%) sepia(45%) saturate(6575%) hue-rotate(185deg) brightness(100%) contrast(102%);
+.blue:hover {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(45%) saturate(6575%)
+    hue-rotate(185deg) brightness(100%) contrast(102%);
 }
-@keyframes grow{
-  0%{
+@keyframes grow {
+  0% {
     width: 60px;
   }
-  100%{
+  100% {
     width: 200px;
   }
 }
 @keyframes shrink {
-  0%{
+  0% {
     width: 200px;
   }
-  100%{
+  100% {
     width: 60px;
   }
 }
-.animate-grow{
+.animate-grow {
   animation: grow 500ms ease-in-out;
   transition: all;
 }
-.animate-shrink{
+.animate-shrink {
   animation: shrink 500ms ease-in-out;
   transition: all;
 }
-@import 'tailwindcss';
+@import "tailwindcss";

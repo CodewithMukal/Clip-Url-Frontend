@@ -7,7 +7,7 @@ export const Accordion = (props) => {
   return (
     <div
       onClick={() => setHide(!hideAns)}
-      className="w-[700px] cursor-pointer relative flex flex-col bg-white border-[1px] border-black/10 px-10 transition-transform py-4 justify-center "
+      className="md:w-[700px] w-[90%] cursor-pointer relative flex flex-col bg-white border-[1px] border-black/10 px-10 transition-transform py-4 justify-center "
     >
       <div className="flex justify-between items-center">
         <div className="flex justify-center items-center gap-8 font-[Inter] font-medium">

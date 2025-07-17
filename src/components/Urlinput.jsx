@@ -94,10 +94,9 @@ export const Urlinput = () => {
   };
 
   return (
-    <div className="w-[95%] flex flex-col justify-center items-start px-[20px] bg-white shadow">
+    <div className="w-[95%] flex flex-col justify-center items-start md:px-[10px] px-[5px] lg:px-[20px] bg-white shadow">
       {verified ? (
-        <div className="flex flex-col gap-6 py-6 justify-center items-start px-[20px] w-full">
-          <ToastContainer />
+        <div className="flex flex-col gap-6 py-6 justify-center items-start md:px-[10px] px-[5px] lg:px-[20px] w-full">
           <input
             placeholder="Enter your URL here"
             className="w-full focus:outline-0 focus:ring-1 ring-[#46A6FF] focus:placeholder:text-[#46A6FF] transition-colors rounded bg-black/5 font-[Inter] text-[13px] px-[10px] py-[5px]"

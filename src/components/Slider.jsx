@@ -17,12 +17,32 @@ export const Slider = () => {
       perView: 5,
       spacing: 15,
     },
+    breakpoints: {
+      '(max-width: 1024px)': {
+        slides: {
+          perView: 3,
+          spacing: 15,
+        },
+      },
+      '(max-width: 1000px)': {
+        slides: {
+          perView: 2,
+          spacing: 10,
+        },
+      },
+      '(max-width: 480px)': {
+        slides: {
+          perView: 1,
+          spacing: 10,
+        },
+      },
+    },
     created(slider) {
       setInterval(() => {
-        slider.next()
-      }, 3000)
-    }
-  })
+        slider.next();
+      }, 3000);
+    },
+  });
   
 
   const reviews = [

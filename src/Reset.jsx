@@ -92,7 +92,7 @@ export const Reset = () => {
   return (
     <div>
       <ToastContainer />
-      <div className="flex justify-between py-[15px] px-[100px] items-center">
+      <div className="flex justify-between py-[15px]  md:px-[50px] px-[10px] lg:px-[100px] items-center">
         <div className="flex justify-center items-center">
           <button className="cursor-pointer" onClick={() => handleLogoClick()}>
             <img className="w-[100px] h-auto" src={logo} alt="" />

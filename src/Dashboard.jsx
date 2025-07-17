@@ -157,7 +157,7 @@ export const Dashboard = () => {
                 <img src={pie} alt="" /> Today's Report
               </p>
             </div>
-            <div className="flex w-[95%] justify-around items-center">
+            <div className="flex flex-col gap-3 md:flex-row w-[95%] justify-around items-center">
               <Card text="Total Views" num={totalClicks} image={eye} />
               <Card text="Links Created" num={links} image={linkvector} />
               <Card text="Most Viewed" num={mostViewed} image={crown} />
@@ -167,7 +167,7 @@ export const Dashboard = () => {
                 <img src={pie} alt="" /> This Month's Report
               </p>
             </div>
-            <div className="flex w-[95%] justify-around items-center">
+            <div className="flex flex-col gap-3 md:flex-row w-[95%] justify-around items-center">
               <Card text="Total Views" num={monthClicks} image={eye} />
               <Card text="Links Created" num={monthLinks} image={linkvector} />
               <Card text="Most Viewed" num={monthMostViewed} image={crown} />

@@ -62,7 +62,7 @@ export const Forgot = () => {
   return (
     <div>
       <ToastContainer />
-      <div className="flex justify-between py-[15px] px-[100px] items-center">
+      <div className="flex justify-between py-[15px] md:px-[50px] px-[10px] lg:px-[100px] items-center">
         <div className="flex justify-center items-center">
           <button className="cursor-pointer" onClick={() => handleLogoClick()}>
             <img className="w-[100px] h-auto" src={logo} alt="" />
@@ -73,7 +73,7 @@ export const Forgot = () => {
             <div>
               <button
                 onClick={() => navigate("/login")}
-                className="font-[Gabarito] transition-colors hover:bg-[#46A6FF] font-bold bg-[#3646F4] text-[18px] rounded-full px-[20px] py-[8px] text-white"
+                className="font-[Gabarito] transition-colors hover:bg-[#46A6FF] font-bold bg-[#3646F4] lg:text-[18px] rounded-full px-[20px] py-[8px] text-white"
               >
                 Login
               </button>
@@ -81,7 +81,7 @@ export const Forgot = () => {
             <div className="flex justify-center items-center">
               <button
                 onClick={() => navigate("/signup")}
-                className="font-[Gabarito] transition-colors font-bold hover:bg-[#46A6FF] bg-[#3646F4] text-[18px] rounded-full px-[20px] py-[8px] text-white"
+                className="font-[Gabarito] transition-colors font-bold hover:bg-[#46A6FF] bg-[#3646F4] lg:text-[18px] rounded-full px-[20px] py-[8px] text-white"
               >
                 Signup
               </button>
@@ -92,7 +92,7 @@ export const Forgot = () => {
             <div>
               <button
                 onClick={() => navigate("/dashboard")}
-                className="font-[Gabarito] transition-colors hover:bg-[#46A6FF] font-bold bg-[#3646F4] text-[18px] rounded-full px-[20px] py-[8px] text-white"
+                className="font-[Gabarito] transition-colors hover:bg-[#46A6FF] font-bold bg-[#3646F4] lg:text-[18px] rounded-full px-[20px] py-[8px] text-white"
               >
                 Dashboard
               </button>
@@ -101,7 +101,7 @@ export const Forgot = () => {
         )}
       </div>
       {!sending && !sent ? (
-        <div className="bg-white mt-[70px] shadow rounded-[20px] flex justify-center px-[50px] gap-6 py-[30px] font-[Inter] w-fit mx-auto flex-col">
+        <div className="bg-white max-w-[90%] mt-[70px] shadow rounded-[20px] flex justify-center px-[50px] gap-6 py-[30px] font-[Inter] w-fit mx-auto flex-col">
           <div className="flex flex-col gap-1">
             <h1 className="font-bold text-center text-xl">Forgot Password</h1>
             <p className="text-center text-xs text-black/70">

@@ -31,31 +31,31 @@ export const Navbar = () => {
     navigate("/dashboard");
   };
   return (
-    <div className="flex justify-between px-[24px] items-center py-[12px] bg-white">
+    <div className="flex justify-between px-[10px] lg:px-[24px] items-center py-[12px] bg-white">
       <div className="flex justify-center gap-[64px] items-center">
         <a href="#">
           <img className="w-[100px] h-auto" src={logo} alt="" />
         </a>
         <a
-          className="text-[18px] hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
+          className="text-[18px] hidden md:block hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
           href="#"
         >
           Home
         </a>
         <a
-          className="text-[18px] hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
+          className="text-[18px] hidden md:block hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
           href="#"
         >
           About
         </a>
         <a
-          className="text-[18px] hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
+          className="text-[18px] hidden md:block hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
           href="#"
         >
           How to Use
         </a>
         <a
-          className="text-[18px] hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
+          className="text-[18px] hidden md:block hover:opacity-75 hover:-translate-y-[1px] font-[Inter]"
           href="#"
         >
           Features
@@ -63,11 +63,11 @@ export const Navbar = () => {
       </div>
       <div className="flex justify-center items-center">
         {!loggedIn ? (
-          <div className="flex  gap-4 justify-center items-center">
+          <div className="flex gap-1 lg:gap-4 justify-center items-center">
             <div>
               <button
                 onClick={() => handleLoginNav()}
-                className="font-[Gabarito] transition-colors hover:bg-[#46A6FF] font-bold bg-[#3646F4] text-[18px] rounded-full px-[20px] py-[8px] text-white"
+                className="font-[Gabarito] transition-colors hover:bg-[#46A6FF] font-bold bg-[#3646F4] lg:text-[18px] md:text-[16px] text-[14px] rounded-full px-[20px] py-[8px] text-white"
               >
                 Login
               </button>
@@ -75,7 +75,7 @@ export const Navbar = () => {
             <div className="flex justify-center items-center">
               <button
                 onClick={() => handleSignupClick()}
-                className="font-[Gabarito] transition-colors font-bold hover:bg-[#46A6FF] bg-[#3646F4] text-[18px] rounded-full px-[20px] py-[8px] text-white"
+                className="font-[Gabarito] transition-colors font-bold hover:bg-[#46A6FF] bg-[#3646F4] lg:text-[18px] md:text-[16px] text-[14px] rounded-full px-[20px] py-[8px] text-white"
               >
                 Signup
               </button>

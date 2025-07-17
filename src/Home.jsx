@@ -19,30 +19,36 @@ import x from "./assets/x.svg";
 import li from "./assets/li.svg";
 import fb from "./assets/fb.svg";
 import insta from "./assets/insta.svg";
-import { useNavigate } from "react-router";
-import prop from "./assets/prop.svg";
+import hero from "./assets/hero.svg";
+import growarrow from "./assets/growarrow.svg";
+import shadowbox from "./assets/shadowbox.svg";
 
 export const Home = () => {
   return (
     <div>
       <Navbar />
-      <section className="flex bg-gradient-to-b from-white justify-between items-center py-[100px] px-[100px] to-[#EFFBFD] ">
-        <div className="flex mt-[50px] z-10 justify-center gap-[40px] flex-col">
-          <h1 className="text-[60px] max-w-[650px] font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
+      <section className="flex justify-between items-center py-[100px] md:px-[50px] px-[10px] lg:px-[100px]  ">
+        <img
+          src={hero}
+          className="absolute w-[100%] md:top-4 lg:top-10 left-0 -z-10"
+          alt=""
+        />
+        <div className="flex lg:mt-[50px] z-10 justify-center gap-[40px] flex-col">
+          <h1 className="lg:text-[60px] md:text-left text-center md:text-[60px] text-3xl max-w-[650px] font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
             Transform Links, Enhance Engagement, Effortlessly
           </h1>
-          <p className="font-[Inter] max-w-[800px] text-[20px]">
+          <p className="font-[Inter] text-black flex max-w-[800px] lg:text-[20px]">
             Our short URL generator simplifies link sharing, making it easier
             for you to track clicks and optimize your marketing efforts.
             Experience the power of concise URLs that boost engagement and
             improve user experience.
           </p>
-          <div className="flex w-full justify-start items-center">
+          <div className="flex flex-col md:flex-row md:gap-0 gap-2 w-full justify-start items-center">
             <div className="relative">
               <input
                 type="url"
                 placeholder="Enter URL to shortern in one click!"
-                className="bg-white py-[10px] w-[600px] border-[1px] border-[#C5C5C5] border-r-0 rounded-l-full placeholder:font-medium placeholder:text-[16px] text-[20px] pl-[60px] "
+                className="bg-white py-[10px] lg:w-[600px] border-[1px] border-[#C5C5C5] border-r-0 rounded-full md:rounded-r-none placeholder:font-medium placeholder:text-[12px] placeholder:lg:text-[16px] text-[20px] pl-[60px] "
               />
               <img
                 className="absolute top-[50%] -translate-y-[50%] w-[30px] h-auto left-[15px]"
@@ -51,30 +57,30 @@ export const Home = () => {
               />
             </div>
             <div>
-              <button className="font-[Inter] rounded-r-full text-nowrap text-[20px] py-[10px] px-[20px] bg-[#3646F4] transition-colors border-[1px] border-l-0 border-[#3646F4] hover:bg-[#46A6FF] text-white font-bold">
+              <button className="font-[Inter] rounded-l-full rounded-r-full md:rounded-tl-none md:rounded-bl-none text-nowrap text-[12px] lg:text-[20px] py-[10px] px-[20px] bg-[#3646F4] transition-colors border-[1px] border-[#3646F4] hover:bg-[#46A6FF] text-white font-bold">
                 Shorten -{">"}
               </button>
             </div>
           </div>
         </div>
-        <div className="z-10">
+        <div className="z-10 hidden">
           <img className="w-[600px] h-auto" src={longvshort} alt="" />
         </div>
       </section>
-      <section className="my-[50px] px-[100px]">
+      <section className="my-[50px] md:px-[50px] px-[10px] lg:px-[100px]">
         <div className="flex flex-col gap-[14px] justify-center items-end">
           <h3 className="text-[20px] font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8] text-right">
             Features
           </h3>
-          <h1 className="text-[60px] max-w-[800px] text-right font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
+          <h1 className="md:text-[60px] text-3xl max-w-[800px] text-right font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
             Discover our Powerful URL Shortening Features
           </h1>
-          <p className="text-[#707070] text-right text-[18px] max-w-[800px]">
+          <p className="text-[#707070] text-right md:text-[18px] max-w-[800px]">
             Transform long URLs into short, manageable links effortlessly. Our
             features are designed to enhance your link-sharing experience.
           </p>
         </div>
-        <div className="flex justify-around my-[50px] py-[10px] items-center">
+        <div className="flex flex-col lg:flex-row justify-around my-[50px] py-[10px] items-center">
           <div className="flex flex-col gap-[15px] justify-center items-center">
             <img className="w-[450px] h-auto" src={ft1} alt="" />
             <h1 className="font-[Inter] text-center font-bold text-[26px]">
@@ -103,50 +109,99 @@ export const Home = () => {
         </div>
         <div className="flex justify-center items-center gap-[50px]">
           <div className="flex justify-center items-center">
-            <button className="font-[Inter] hover:bg-[#3646F4] hover:text-white transition-colors cursor-pointer bg-white border-[1px] border-[#3646F4] text-[#3464f4] font-semibold text-[20px] py-[15px] px-[30px]">
+            <button className="font-[Inter] hover:bg-[#3646F4] hover:text-white transition-colors cursor-pointer bg-white border-[1px] border-[#3646F4] text-[#3464f4] font-semibold md:text-[20px] py-[15px] px-[30px]">
               Learn More
             </button>
           </div>
           <div className="flex justify-center items-center">
             <button className="hover:cursor-pointer transition-all ring-[#3464F4] py-[15px] px-[30px] hover:ring-[1px]">
-              <pre className="font-[Inter] font-semibold text-[20px] text-[#3464f4]">
+              <pre className="font-[Inter] font-semibold md:text-[20px] text-[#3464f4]">
                 Sign Up {">"}
               </pre>
             </button>
           </div>
         </div>
       </section>
-      <section className="px-[100px] my-[100px]">
-        <div className="flex flex-col gap-[14px] justify-center items-start">
-          <h3 className="text-[20px] font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8] text-left">
-            Simplify
-          </h3>
-          <h1 className="text-[60px] max-w-[800px] text-left font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
-            Transform Long Links into Short URL's
-          </h1>
-          <p className="text-[#707070] text-left text-[18px] max-w-[800px]">
-            Using our URL shortening service is quick and easy. Follow these
-            simple steps to create shareable links in no time.
-          </p>
+      <section className="md:px-[50px] px-[10px] lg:px-[100px] my-[100px]">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between">
+          <div className="flex flex-col gap-[14px] justify-center items-start">
+            <h3 className="text-[20px] font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8] text-left">
+              Simplify
+            </h3>
+            <h1 className="md:text-[60px] text-3xl max-w-[800px] text-left font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
+              Transform Long Links into Short URL's
+            </h1>
+            <p className="text-[#707070] text-left text-[18px] max-w-[800px]">
+              Using our URL shortening service is quick and easy. Follow these
+              simple steps to create shareable links in no time.
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-4 flex-row-reverse">
+              <img
+                className="md:w-[100px] w-[40px] animate-box delay-200ms relative bottom-8"
+                src={shadowbox}
+                alt=""
+              />
+              <img
+                className="md:w-[100px] w-[40px] animate-box delay-500ms relative bottom-6"
+                src={shadowbox}
+                alt=""
+              />
+              <img
+                className="md:w-[100px] w-[40px] animate-box relative bottom-4"
+                src={shadowbox}
+                alt=""
+              />
+              <img
+                className="md:w-[100px] w-[40px] animate-box  delay-800ms relative bottom-2"
+                src={shadowbox}
+                alt=""
+              />
+            </div>
+            <div className="flex gap-4 flex-row-reverse">
+              <img
+                className="md:w-[100px] w-[40px] animate-box  delay-100ms relative bottom-8"
+                src={shadowbox}
+                alt=""
+              />
+              <img
+                className="md:w-[100px] w-[40px] animate-box relative bottom-6"
+                src={shadowbox}
+                alt=""
+              />
+              <img
+                className="md:w-[100px] w-[40px] animate-box delay-100ms relative bottom-4"
+                src={shadowbox}
+                alt=""
+              />
+              <img
+                className="md:w-[100px] w-[40px] animate-box  relative bottom-2"
+                src={shadowbox}
+                alt=""
+              />
+            </div>
+          </div>
         </div>
-        <div className="flex my-[80px] justify-evenly items-center">
+        <div className="flex flex-col gap-8 lg:flex-row my-[80px] justify-evenly items-center">
           <div className="flex flex-col max-w-[400px] justify-center items-center">
-            <img src={clipboard} alt="" />
-            <h1 className="font-bold text-center text-[32px]">
+            <img className="" src={clipboard} alt="" />
+            <h1 className="font-bold text-center text-2xl md:text-[32px]">
               Step 1: Enter your long URL
             </h1>
             <p>Type or paste your URL that you wish to shorten.</p>
           </div>
-          <div className="flex flex-col max-w-[400px] justify-center items-center">
+          <div className="flex flex-col text-center max-w-[400px] justify-center items-center">
             <img src={link} alt="" />
-            <h1 className="font-bold text-center text-[31px]">
+            <h1 className="font-bold text-center text-2xl md:text-[32px]">
               Step 2: Copy the generated short URL
             </h1>
             <p>Easily copy the generated URL that is now transformed.</p>
           </div>
           <div className="flex flex-col max-w-[400px] justify-center items-center">
             <img src={share} alt="" />
-            <h1 className="font-bold text-center text-[32px]">
+            <h1 className="font-bold text-center text-2xl md:text-[32px]">
               Step 3: Share the short URL easily
             </h1>
             <p>Share the link across your audience</p>
@@ -167,15 +222,18 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section className="px-[100px]">
-        <div className="flex flex-col gap-[14px] justify-center items-end">
-          <h1 className="text-[60px] max-w-[800px] text-left font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
-            Customer Testimonials
-          </h1>
-          <p className="text-[#707070] text-left text-[18px] max-w-[800px]">
-            Here are some reviews from our recent customers on how there
-            experience was with us.
-          </p>
+      <section className="md:px-[50px] px-[10px] lg:px-[100px]">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
+          <img className="lg:w-[650px] w-[90%] animated-arrow" src={growarrow} alt="" />
+          <div className="flex flex-col gap-[14px] justify-center items-end">
+            <h1 className="text-[60px] max-w-[800px] text-left font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
+              Customer Testimonials
+            </h1>
+            <p className="text-[#707070] text-left text-[18px] max-w-[800px]">
+              Here are some reviews from our recent customers on how there
+              experience was with us.
+            </p>
+          </div>
         </div>
         <div>
           <div className="flex gap-[50px] my-[50px] justify-center items-center">
@@ -184,7 +242,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 my-[50px] px-[100px]">
+      <section className="flex flex-col gap-10 my-[50px] md:px-[50px] px-[10px] lg:px-[100px]">
         <div className="">
           <h1 className="text-[60px] text-center font-bold font-[Inter] text-transparent bg-clip-text bg-gradient-to-br from-[#009661] to-[#51AEC8]">
             FAQ's
@@ -221,138 +279,111 @@ export const Home = () => {
           </button>
         </div>
       </section>
-      <section className="text-white flex flex-col gap-10 bg-[#3646f4] font-[inter] px-[100px] w-[100%] ">
-        <div className="flex justify-between py-8">
-          <div className="flex flex-col justify-center items-start">
-            <h1 className="font-bold text-xl">Login Now to Begin</h1>
-            <p className="text-[14px]">
-              Access features like analytics and unlimited link generation.
-            </p>
-          </div>
-          <div>
-            <div className="flex justify-center items-center gap-6">
-              <input
-                type="email"
-                className="bg-white px-10 pl-2 h-14 text-black font-[Inter] placeholder:font-medium"
-                placeholder="Enter your email here"
-              />
-              <button className="bg-white h-14 text-[#3646f4] font-[Inter] font-semibold px-8 ">
-                <p>Join</p>
-              </button>
-            </div>
-            <div>
-              <p className="text-[12px]">
-                By joining you accept our T&C and Privacy Policy.
-              </p>
-            </div>
-          </div>
+      <section className="text-white flex flex-col gap-10 bg-[#3646f4] font-[inter] md:px-[50px] px-[10px] lg:px-[100px] w-full">
+  {/* Top CTA Section */}
+  <div className="flex flex-col md:flex-row justify-between py-8 gap-6 md:gap-0">
+    <div className="flex flex-col justify-center items-start">
+      <h1 className="font-bold text-xl">Login Now to Begin</h1>
+      <p className="text-sm">
+        Access features like analytics and unlimited link generation.
+      </p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
+        <input
+          type="email"
+          className="bg-white px-4 py-2 h-14 text-black font-[Inter] placeholder:font-medium flex-1"
+          placeholder="Enter your email here"
+        />
+        <button className="bg-white h-14 text-[#3646f4] font-[Inter] font-semibold px-6">
+          Join
+        </button>
+      </div>
+      <p className="text-xs text-center sm:text-left">
+        By joining you accept our T&C and Privacy Policy.
+      </p>
+    </div>
+  </div>
+
+  {/* Footer Links Section */}
+  <div className="flex flex-wrap justify-between items-start gap-y-8">
+    {/* Logo */}
+    <div className="w-full sm:w-1/2 lg:w-auto flex justify-center sm:justify-start">
+      <a href="">
+        <img
+          className="invert-[98%] sepia-[2%] saturate-[9%] hue-rotate-[5deg] brightness-0 contrast-[105%] w-[150px]"
+          src={logo}
+          alt="logo"
+        />
+      </a>
+    </div>
+
+    {/* Reusable Link Group */}
+    {[
+      {
+        title: "Useful Links",
+        links: ["About Us", "Contact Us", "Help Center", "Blog Posts", "FAQ's"],
+      },
+      {
+        title: "Social Links",
+        links: [
+          "Facebook Page",
+          "Twitter Feed",
+          "Instagram Profile",
+          "LinkedIn Page",
+          "YouTube Channel",
+        ],
+      },
+      {
+        title: "Legal Info",
+        links: [
+          "User Agreement",
+          "Cookie Policy",
+          "Privacy Policy",
+          "Terms & Conditions",
+          "Feedback Form",
+        ],
+      },
+      {
+        title: "Contact Info",
+        links: ["Email Us", "Call Us", "Visit Center"],
+      },
+    ].map((group, idx) => (
+      <div
+        key={idx}
+        className="w-1/2 sm:w-1/3 lg:w-auto flex flex-col items-start gap-2"
+      >
+        <h1 className="font-bold text-[18px]">{group.title}</h1>
+        <div className="flex flex-col gap-1 text-sm">
+          {group.links.map((link, i) => (
+            <a
+              key={i}
+              className="text-white hover:text-[#46A6FF]"
+              href=""
+            >
+              {link}
+            </a>
+          ))}
         </div>
-        <div className="flex justify-around items-start">
-          <div>
-            <a href="">
-              <img
-                className="invert-[98%] sepia-[2%] saturate-[9%] hue-rotate-[5deg] brightness-0  contrast-[105%]"
-                src={logo}
-                alt=""
-              />
-            </a>
-          </div>
-          <div className="flex justify-center gap-4 items-start flex-col">
-            <h1 className="font-bold text-[18px]">Useful Links</h1>
-            <div className="flex gap-4 flex-col">
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                About Us
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Contact Us
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Help Center
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Blog Posts
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                FAQ's
-              </a>
-            </div>
-          </div>
-          <div className="flex justify-center gap-4 items-start flex-col">
-            <h1 className="font-bold text-[18px]">Social Links</h1>
-            <div className="flex gap-4 flex-col">
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Facebook Page
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Twitter Feed
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Instagram Profile
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                LinkedIn Page
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                YouTube Channel
-              </a>
-            </div>
-          </div>
-          <div className="flex justify-center gap-4 items-start flex-col">
-            <h1 className="font-bold text-[18px]">Legal Info</h1>
-            <div className="flex gap-4 flex-col">
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                User Agreement
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Cookie Policy
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Privacy Policy
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Terms & Conditions
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Feedback Form
-              </a>
-            </div>
-          </div>
-          <div className="flex justify-center gap-4 items-start flex-col">
-            <h1 className="font-bold text-[18px]">Contact Info</h1>
-            <div className="flex gap-4 flex-col">
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Email Us
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Call Us
-              </a>
-              <a className="text-white hover:text-[#46A6FF]" href="">
-                Visit Center
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="text-[14px] my-[40px] flex justify-between items-center">
-          © ClipURL {new Date().getFullYear()}, All rights Reserved
-          <div className="flex gap-3 justify-center items-center">
-            <a className="blue" href="">
-              <img className="w-8" src={insta} alt="" />
-            </a>
-            <a className="blue" href="">
-              <img className="w-8" src={fb} alt="" />
-            </a>
-            <a className="blue" href="">
-              <img className="w-8" src={x} alt="" />
-            </a>
-            <a className="blue" href="">
-              <img className="w-8" src={li} alt="" />
-            </a>
-            <a className="blue" href="">
-              <img className="w-8" src={yt} alt="" />
-            </a>
-          </div>
-        </div>
-      </section>
+      </div>
+    ))}
+  </div>
+
+  {/* Bottom Section */}
+  <div className="text-sm my-10 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <p className="text-center sm:text-left">
+      © ClipURL {new Date().getFullYear()}, All rights Reserved
+    </p>
+    <div className="flex gap-3 justify-center items-center">
+      {[insta, fb, x, li, yt].map((icon, i) => (
+        <a key={i} href="">
+          <img className="w-8" src={icon} alt="icon" />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
     </div>
   );
 };

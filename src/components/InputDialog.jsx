@@ -35,8 +35,8 @@ export const InputDialog = (props) => {
     }
   };
   return (
-    <div className="bg-black/50 z-10 font-[Inter] w-[100vw] h-[100vh] fixed top-0 left-0">
-      <div className="w-fit z-20 flex flex-col gap-3 py-4 px-8 rounded-2xl mx-auto relative top-[50%] -translate-y-[50%] bg-white items-center">
+    <div className="bg-black/30 backdrop-blur-xl z-10 font-[Inter] w-[100vw] h-[100vh] fixed top-0 left-0">
+      <div className="w-fit z-20 animate-scale transition-all flex flex-col gap-3 py-4 px-8 rounded-2xl mx-auto relative top-[50%] -translate-y-[50%] bg-white items-center">
         <h1 className="text-2xl font-bold">Edit Link</h1>
         <div className="flex flex-col">
           <label htmlFor="">Original</label>

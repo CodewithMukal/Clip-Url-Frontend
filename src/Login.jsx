@@ -79,7 +79,7 @@ export const Login = () => {
   return (
     <div>
       <ToastContainer />
-      <div className="flex justify-between py-[15px] px-[100px] items-center">
+      <div className="flex justify-between py-[15px] md:px-[50px] px-[10px] lg:px-[100px] items-center">
         <div className="flex justify-center items-center">
           <button className="cursor-pointer" onClick={() => handleLogoClick()}>
             <img className="w-[100px] h-auto" src={logo} alt="" />
@@ -94,7 +94,7 @@ export const Login = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white mt-[70px] shadow rounded-[20px] flex justify-center px-[50px] gap-10 py-[30px] font-[Inter] w-fit mx-auto flex-col">
+      <div className="bg-white animate-scale2 mt-[20px] lg:mt-[70px] shadow rounded-[20px] flex justify-center px-[50px] gap-10 py-[30px] max-w-[90%] font-[Inter] w-fit mx-auto flex-col">
         <h1 className="font-bold text-xl">Login</h1>
         <div className="flex flex-col">
           <label className="text-[#767676] font-medium text-[14px]" htmlFor="">

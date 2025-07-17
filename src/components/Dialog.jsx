@@ -29,9 +29,9 @@ export const Dialog = (props) => {
   };
 
   return (
-    <div className="bg-black/50 z-10 font-[Inter] w-[100vw] h-[100vh] fixed top-0 left-0">
+    <div className="bg-black/30 backdrop-blur-xl z-10 font-[Inter] w-[100vw] h-[100vh] fixed top-0 left-0">
       <ToastContainer />
-      <div className="w-fit z-20 flex flex-col py-4 px-8 rounded-2xl mx-auto relative top-[50%] -translate-y-[50%] bg-white items-center">
+      <div className="w-fit z-20 flex animate-scale transition-all flex-col py-4 px-8 rounded-2xl mx-auto relative top-[50%] -translate-y-[50%] bg-white items-center">
         <h1 className="text-2xl font-bold">Are you sure you want to delete?</h1>
         <p>{props.shortID}</p>
         <div className="flex gap-4 my-4">
