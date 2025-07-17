@@ -16,6 +16,7 @@ export const Urlinput = () => {
   const [verified, setVerify] = useState(undefined);
   const [alias, setAlias] = useState("");
   const [shortening, setShorten] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -164,12 +165,20 @@ export const Urlinput = () => {
           <p className="text-cl font-bold font-[Inter]">
             Verify your email to use shortner
           </p>
-          <button
-            onClick={sendVerifyMail}
-            className="bg-blue-500 font-bold text-white py-2 hover:bg-blue-700 transition-colors "
-          >
-            Send me verification mail!
-          </button>
+          {!loading ? (
+            <button
+              onClick={sendVerifyMail}
+              className="bg-blue-500 font-bold text-white py-2 hover:bg-blue-700 transition-colors "
+            >
+              Send me verification mail!
+            </button>
+          ) : (
+            <button
+              className="bg-gray-300 font-bold text-white py-2 transition-colors "
+            >
+              <Spinner mode={2}/>
+            </button>
+          )}
         </div>
       )}
     </div>
