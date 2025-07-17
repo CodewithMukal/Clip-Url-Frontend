@@ -1,13 +1,22 @@
-# React + Vite
+# ClipURL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A brilliant URL shortner made using the following technologies:
 
-Currently, two official plugins are available:
+<ul>
+  <li>React (For frontend)</li>
+  <li>Tailwind (For styling)</li>
+  <li>NodeJS (For backend)</li>
+  <li>Express (For server)</li>
+  <li>MongoDB (Database)</li>
+  <li>JWT (Login tokens)</li>
+  <li>BCrypt (Hashing Passwords)</li>
+</ul>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Frontend is hosted using Vercel and Backend is hosted using Render.
 
-## Expanding the ESLint configuration
+Repository for Backend: <a target="_black" href="https://github.com/CodewithMukal/Clip-Url-Backend">Here</a>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## For Any contribution you can create an issue first and then submit a PR on approval.
+
+
 # Clip-Url-Frontend
